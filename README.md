@@ -34,11 +34,23 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 You might prepare by writing down your own answers before hand.
 
 1. Explain how you took advantage of Java's Object Oriented approach to solve the sprint challenge.
+   Broke up the functionality into classes that handled each step of the controller->service->repository->model flow.
+
 2. Explain the three steps needed to run a Java application (using the JDK) including what each step does and how those
    step correlate to running a JavaScript application.
+   The first step is to compile the you java files to bytecode. The next step is to create a executable jar file.
+   Then you run the executable jar file. All of these, the compiling, building and running are handled by node in JS.
+   
 3. Explain how Java being a strongly typed language affected you solution.
+   At first, it was actually really tough to get used to, but now, after a few days, having to declare the types for 
+   everything actually really helped my coding and debugging. Having to plan out everything in advanced really 
+   helped shorten my debugging process.
+
 4. Can you explain the differences between Abstract Classes and Interfaces including how they are used in your
    application?
+   The first difference that comes to mind is that you can implement multiple interfaces but only one abstract class.
+   The next is that abstract classes can have fields and interfaces cannot. Another would be that interfaces contain 
+   only method headers and abstract classes can have method bodies.
 
 ## Instructions
 
