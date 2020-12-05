@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.DecimalFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class CoinController
@@ -70,8 +71,8 @@ public class CoinController
 				long quant = coin.getQuantity();
 				long newAmt = quant - ((cp - amtX100) / (long)(coin.getValue() * 100));
 				coin.setQuantity(newAmt);
-				deletionOut.append(quant - newAmt > 1 ? "\nRemoved " + (quant - newAmt) + " " + coin.getNameplural() :
-				"\nRemoved " + (quant - newAmt) + " " + coin.getName());
+				deletionOut.append(quant - newAmt > 1 ? "\nRemoved " + (quant - newAmt) + " " + coin.getNameplural()
+						: "\nRemoved " + (quant - newAmt) + " " + coin.getName());
 			}
 			else
 			{
@@ -82,6 +83,7 @@ public class CoinController
 						"\nRemoved " + quant + " " + coin.getName());
 			}
 		}
+		
 		System.out.println(deletionOut);
 		System.out.println("The new piggy bank contents: ");
 		
