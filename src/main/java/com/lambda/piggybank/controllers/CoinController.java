@@ -54,6 +54,14 @@ public class CoinController
 		coinRepository.findAll().iterator().forEachRemaining(coinList::add);
 		coinList.sort((c1, c2) -> (int) (c2.getValue() * 100 - c1.getValue() * 100));
 		
+		double total = 0;
+		for (Coin coin : coinList)
+		{
+			total += coin.getValue() * coin.getQuantity();
+		}
+		if (amount > total) return new ResponseEntity<String>("Money not available", HttpStatus.OK);
+		
+		
 		int amtX100 = (int)(amount * 100);
 		StringBuilder deletionOut = new StringBuilder();
 		
