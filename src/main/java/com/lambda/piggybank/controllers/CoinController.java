@@ -41,7 +41,7 @@ public class CoinController
 			total += coin.getValue() * coin.getQuantity();
 		}
 		
-		sysout += "The piggy bank hold " + df.format(total);
+		sysout += "The piggy bank holds " + df.format(total);
 		System.out.println(sysout);
 		return new ResponseEntity<>(df.format(total), HttpStatus.OK);
 	}
