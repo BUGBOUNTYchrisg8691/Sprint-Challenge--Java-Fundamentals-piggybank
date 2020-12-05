@@ -7,9 +7,7 @@ import java.util.List;
 
 public class GetTotalHelper
 {
-	DecimalFormat df = new DecimalFormat("$###.00");
-	
-	public double getTotal(List<Coin> coinList)
+	public static double getTotal(List<Coin> coinList)
 	{
 		double total = 0;
 		for (Coin coin : coinList)
@@ -19,8 +17,10 @@ public class GetTotalHelper
 		return total;
 	}
 	
-	public StringBuilder getTotalWithStringBuilder(List<Coin> coinList)
+	public static StringBuilder getTotalWithStringBuilder(List<Coin> coinList)
 	{
+		DecimalFormat df = new DecimalFormat("$###.00");
+		
 		double total = 0;
 		StringBuilder sysout = new StringBuilder();
 		

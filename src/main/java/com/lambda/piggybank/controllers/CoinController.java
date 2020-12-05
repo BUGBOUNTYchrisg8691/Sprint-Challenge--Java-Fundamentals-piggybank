@@ -27,22 +27,9 @@ public class CoinController
 		
 		DecimalFormat df = new DecimalFormat("$###.00");
 		
-		double total = 0;
-		String sysout = "";
-		for (Coin coin : coinList)
-		{
-			if (coin.getQuantity() > 1)
-			{
-				sysout += coin.getQuantity() + " " + coin.getNameplural() + "\n";
-			}
-			else
-			{
-				sysout += coin.getQuantity() + " " + coin.getName() + "\n";
-			}
-			total += coin.getValue() * coin.getQuantity();
-		}
+		double total = GetTotalHelper.getTotal(coinList);
+		StringBuilder sysout = GetTotalHelper.getTotalWithStringBuilder(coinList);
 		
-		sysout += "The piggy bank holds " + df.format(total);
 		System.out.println(sysout);
 		return new ResponseEntity<>(df.format(total), HttpStatus.OK);
 	}
@@ -54,13 +41,8 @@ public class CoinController
 		coinRepository.findAll().iterator().forEachRemaining(coinList::add);
 		coinList.sort((c1, c2) -> (int) (c2.getValue() * 100 - c1.getValue() * 100));
 		
-		double total = 0;
-		for (Coin coin : coinList)
-		{
-			total += coin.getValue() * coin.getQuantity();
-		}
+		double total = GetTotalHelper.getTotal(coinList);
 		if (amount > total) return new ResponseEntity<String>("Money not available", HttpStatus.OK);
-		
 		
 		int amtX100 = (int)(amount * 100);
 		StringBuilder deletionOut = new StringBuilder();
