@@ -19,13 +19,14 @@ public class CoinController
 	@Autowired
 	CoinRepository coinRepository;
 	
+	DecimalFormat df = new DecimalFormat("$###.00");
+	
 	@GetMapping(value ="/total", produces = "application/json")
 	public ResponseEntity<?> getTotal()
 	{
 		List<Coin> coinList = new ArrayList<>();
 		coinRepository.findAll().iterator().forEachRemaining(coinList::add);
 		
-		DecimalFormat df = new DecimalFormat("$###.00");
 		
 		double total = GetTotalHelper.getTotal(coinList);
 		StringBuilder sysout = GetTotalHelper.getTotalWithStringBuilder(coinList);
@@ -46,7 +47,7 @@ public class CoinController
 		
 		int amtX100 = (int)(amount * 100);
 		StringBuilder deletionOut = new StringBuilder();
-		
+
 		for (Coin coin : coinList)
 		{
 			if (amtX100 == 0) break;
@@ -88,6 +89,7 @@ public class CoinController
 		}
 		
 		System.out.println(coins);
+		System.out.println("Your new total is " + df.format(GetTotalHelper.getTotal(coinList)));
 		
 		return new ResponseEntity<>(coinList, HttpStatus.OK);
 	}
